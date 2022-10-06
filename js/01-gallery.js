@@ -46,7 +46,6 @@ function onClickUrlBigImage(e) {
 
     window.addEventListener("keydown", e => {
         if (e.code === "Escape") {
-            console.log(e.code);
             instance.close();
         }
     },
