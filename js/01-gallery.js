@@ -4,12 +4,12 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector('.gallery')
 const makrupGallery = createGallaryCardsMarkup(galleryItems);
 
-galleryContainer.insertAdjacentHTML("afterbegin", makrupGallery)
-
 
 
 galleryContainer.addEventListener('click', onClickUrlBigImage);
 
+
+galleryContainer.insertAdjacentHTML("afterbegin", makrupGallery)
 
 function createGallaryCardsMarkup(galleryItems) {
     return galleryItems
@@ -31,6 +31,7 @@ function createGallaryCardsMarkup(galleryItems) {
 
 }
 
+
 function onClickUrlBigImage(e) {
     e.preventDefault()
     if (e.target.nodeName !== 'IMG') {
@@ -38,14 +39,18 @@ function onClickUrlBigImage(e) {
     }
     let source = e.target.dataset.source;
     // console.log(source);
-    // return source;
-
     const instance = basicLightbox.create(`
     <img src="${source}" width="800" height="600">`)
-    instance.show()
+    instance.show();
 
+
+    window.addEventListener("keydown", e => {
+        if (e.code === "Escape") {
+            console.log(e.code);
+            instance.close();
+        }
+    },
+        { once: true }
+    );
 }
-
-
-
 
