@@ -7,9 +7,8 @@ const makrupGallery = createGallaryCardsMarkup(galleryItems);
 
 
 galleryContainer.addEventListener('click', onClickUrlBigImage);
-
-
 galleryContainer.insertAdjacentHTML("afterbegin", makrupGallery)
+
 
 function createGallaryCardsMarkup(galleryItems) {
     return galleryItems
@@ -28,9 +27,7 @@ function createGallaryCardsMarkup(galleryItems) {
         `;
         })
         .join('');
-
 }
-
 
 function onClickUrlBigImage(e) {
     e.preventDefault()
@@ -44,12 +41,13 @@ function onClickUrlBigImage(e) {
     instance.show();
 
 
-    window.addEventListener("keydown", e => {
+    window.addEventListener("keydown", onEscapeClose);
+
+    function onEscapeClose(e) {
         if (e.code === "Escape") {
             instance.close();
+            window.removeEventListener("keydown", onEscapeClose);
         }
-    },
-        { once: true }
-    );
+    }
 }
 
