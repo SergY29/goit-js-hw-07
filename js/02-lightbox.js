@@ -30,9 +30,7 @@ function onClickUrlBigImage(e) {
 
     let gallery = new SimpleLightbox('.gallery a', {
         captionsData: "alt",
-        captionDelay: 250,
-        alertErrorMessage: 'Изображение не найдено, простите сейчас загрузим следующее изображение'
-
+        captionDelay: 250
     });
     gallery.on('show.simplelightbox', function () {
 
