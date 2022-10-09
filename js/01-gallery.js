@@ -37,7 +37,11 @@ function onClickUrlBigImage(e) {
     let source = e.target.dataset.source;
     // console.log(source);
     const instance = basicLightbox.create(`
-    <img src="${source}" width="800" height="600">`)
+    <img src="${source}" width="800" height="600">`, {
+        onClose: () => {
+            window.removeEventListener("keydown", onEscapeClose)
+        }
+    })
     instance.show();
 
 

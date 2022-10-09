@@ -4,10 +4,15 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector('.gallery')
 const makrupGallery = createGallaryCardsMarkup(galleryItems);
 
+galleryContainer.insertAdjacentHTML("beforeend", makrupGallery)
 
-galleryContainer.insertAdjacentHTML("afterbegin", makrupGallery)
-galleryContainer.addEventListener('click', onClickUrlBigImage);
+let gallery = new SimpleLightbox('.gallery a', {
+    captionsData: "alt",
+    captionDelay: 250
+});
 
+gallery.on('show.simplelightbox', function () {
+});
 
 function createGallaryCardsMarkup(galleryItems) {
     return galleryItems
@@ -19,23 +24,6 @@ function createGallaryCardsMarkup(galleryItems) {
             `;
         })
         .join('');
-}
-
-
-function onClickUrlBigImage(e) {
-    e.preventDefault()
-    if (e.target.nodeName !== 'IMG') {
-        return
-    }
-
-    let gallery = new SimpleLightbox('.gallery a', {
-        captionsData: "alt",
-        captionDelay: 250
-    });
-    gallery.on('show.simplelightbox', function () {
-
-    });
-
 }
 
 
