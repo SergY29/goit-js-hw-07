@@ -50,7 +50,6 @@ function onClickUrlBigImage(e) {
     function onEscapeClose(e) {
         if (e.code === "Escape") {
             instance.close();
-            window.removeEventListener("keydown", onEscapeClose);
         }
     }
 }
